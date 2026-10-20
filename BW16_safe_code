@@ -1,0 +1,69 @@
+#include "BLEDevice.h"
+#define pending  LED_B   
+#define found LED_G   
+#define locking  PA12 
+BLEAdvertData FD;
+
+int8_t ringRSSIRN = -110;       
+unsigned long ringseen = 0;  
+const unsigned long openwindow = 4000; 
+
+void scanFunction(T_LE_CB_DATA* p_data) {
+    FD.parseScanInfo(p_data);
+    
+    if (FD.hasName()) {
+        String currentDeviceName = FD.getName().c_str();
+        if (currentDeviceName.indexOf("RingConn") != -1) {
+            ringRSSIRN = FD.getRSSI(); 
+            ringseen = millis();            
+        }
+    }
+}
+
+void setup() {
+    Serial.begin(115200);
+    pinMode(pending, OUTPUT);    
+    pinMode(found, OUTPUT);
+    pinMode(locking, OUTPUT);
+    digitalWrite(found, LOW);
+    digitalWrite(pending, HIGH);   
+    digitalWrite(locking, LOW); 
+    BLE.init(); 
+    BLE.configScan()->setScanDuplicateFilter(GAP_SCAN_FILTER_DUPLICATE_DISABLE);
+    BLE.configScan()->setScanMode(GAP_SCAN_MODE_ACTIVE);    
+    BLE.configScan()->setScanInterval(100);   
+    BLE.configScan()->setScanWindow(80);      
+    BLE.configScan()->updateScanParams();
+    BLE.setScanCallback(scanFunction);
+    BLE.beginCentral(0);
+    BLE.configScan()->startScan(0);    
+}
+
+void loop() {
+    if (millis() - ringseen > openwindow) {
+        ringRSSIRN = -110; 
+    }
+    if (ringRSSIRN >= -105 && ringRSSIRN != -110) {
+        digitalWrite(found, HIGH);    
+        digitalWrite(pending, LOW);      
+        digitalWrite(locking, HIGH); 
+        Serial.print("Ring: Found | LIVE RSSI: ");
+        Serial.print(ringRSSIRN);
+        Serial.println(" dBm");
+    } 
+    else {
+        digitalWrite(found, LOW);    
+        digitalWrite(pending, HIGH);
+        digitalWrite(locking, LOW);  
+        
+        Serial.print("Ring: Not Found| LIVE RSSI: ");
+        if (ringRSSIRN == -110) {
+            Serial.print("N/A");
+        } else {
+            Serial.print(ringRSSIRN);
+        }
+        Serial.println(" dBm");
+    }
+
+    delay(500); 
+}
