@@ -4,14 +4,24 @@ This project is about a proximity smart safe using both hardware and software. I
 How does it work?
 The system continuously scans for BLE devices. When the smart ring comes within a specific signal threshold, the BW16 board triggers a solenoid lock to open the safe.
 
+Hardware logic:
+I used the BW16 microcontroller and its pins to connect to a relay, which powers the lock safely without burning out the microchip. I also added a flyback diode to protect the system from the inductive kickback caused by the solenoid lock.
+
+Software logic
+I used the Arduino BLE library to scan all nearby devices and read their names. The code looks for any device name containing the word "RingConn." Once the microchip detects the ring, it checks how strong the signal is and uses that strength as the threshold to unlock the safe.
+
 Limitations:
 The system is vulnerable to spoofing. Because I used a commercial smart ring, I couldn't implement a UUID or secure pairing mechanism, meaning the safe currently trusts the device name rather than a verified identity.
+
+Future changes: 
+- utilizing a custom Bluetooth key to avoid spoofing
+- Shrink the size of the PCB and the circuit
+- add a battery pack that's outside the safe
 
 Tools: 
 Hardware: BW16 (RTL8720DN) Microcontroller, Smart Ring, Solenoid Lock, Flyback Diodes.
 Software: C++ / Arduino IDE.
 Design/Enclosure: KiCad (PCB), Blender/BambuStudio.
-
 
 Media:
 
@@ -19,6 +29,9 @@ Media:
 
 
 <img width="657" height="475" alt="Screenshot 2026-10-22 at 10 40 28 PM" src="https://github.com/user-attachments/assets/d44252c6-6f3d-4d83-bdd1-3bc5484bbd3f" />
+
+<img width="593" height="439" alt="Screenshot 2026-10-26 at 9 08 43 PM" src="https://github.com/user-attachments/assets/b77f62a0-35e6-4273-a3de-d7501c1b4b69" />
+
 
 
 
