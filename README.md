@@ -2,10 +2,10 @@
 This project is about a proximity smart safe using both hardware and software. It uses a commercial smart ring and a BW16 microcontroller to unlock a 3D-printed safe via Bluetooth Low Energy (BLE).
 
 How does it work?
-
 The system continuously scans for BLE devices. When the smart ring comes within a specific signal threshold, the BW16 board triggers a solenoid lock to open the safe.
 
-However, there are still some limitations and issues, such as spoofing. This is because the ring I used is a commercial ring, which means using UUID is not feasible 
+Limitations:
+The system is vulnerable to spoofing. Because I used a commercial smart ring, I couldn't implement a UUID or secure pairing mechanism, meaning the safe currently trusts the device name rather than a verified identity.
 
 Tools: 
 Hardware: BW16 (RTL8720DN) Microcontroller, Smart Ring, Solenoid Lock, Flyback Diodes.
