@@ -4,7 +4,7 @@
 #define locking  PA12 
 BLEAdvertData FD;
 
-int8_t ringRSSIRN = -110;       
+int8_t ringRSSIRN = -110; //inital var
 unsigned long ringseen = 0;  
 const unsigned long openwindow = 4000; 
 
