@@ -47,7 +47,7 @@ void loop() {
         digitalWrite(found, HIGH);    
         digitalWrite(pending, LOW);      
         digitalWrite(locking, HIGH); 
-        Serial.print("Ring: Found | LIVE RSSI: ");
+        Serial.print("Ring: Found - RSSI: ");
         Serial.print(ringRSSIRN);
         Serial.println(" dBm");
     } 
@@ -56,7 +56,7 @@ void loop() {
         digitalWrite(pending, HIGH);
         digitalWrite(locking, LOW);  
         
-        Serial.print("Ring: Not Found| LIVE RSSI: ");
+        Serial.print("Ring: Not Found - RSSI: ");
         if (ringRSSIRN == -110) {
             Serial.print("N/A");
         } else {
