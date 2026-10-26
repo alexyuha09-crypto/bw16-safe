@@ -5,7 +5,7 @@ How does it work?
 
 The system continuously scans for BLE devices. When the smart ring comes within a specific signal threshold, the BW16 board triggers a solenoid lock to open the safe.
 
-However, there are still some limitations and issues, such as spoofing. This is because the Ring I used is a commercial ring which means using UUID is not feasible 
+However, there are still some limitations and issues, such as spoofing. This is because the ring I used is a commercial ring, which means using UUID is not feasible 
 
 Tools: 
 Hardware: BW16 (RTL8720DN) Microcontroller, Smart Ring, Solenoid Lock, Flyback Diodes.
