@@ -65,5 +65,5 @@ void loop() {
         Serial.println(" dBm");
     }
 
-    delay(500); 
+    delay(500); //IMPORTANT FOR THE LOCK TO NOT LOCK AND UNLOCK RANDOMLY
 }
