@@ -17,6 +17,10 @@ Media:
 <img width="508" height="498" alt="Screenshot 2026-08-30 at 5 47 41 PM" src="https://github.com/user-attachments/assets/8e85a0bb-a148-4e09-a415-129b9a8f8b65" />
 
 
-<img width="654" height="531" alt="Screenshot 2026-10-20 at 8 31 45 AM" src="https://github.com/user-attachments/assets/7a524939-35c8-478f-81e3-1c19020b3267" />
+<img width="657" height="475" alt="Screenshot 2026-10-22 at 10 40 28 PM" src="https://github.com/user-attachments/assets/d44252c6-6f3d-4d83-bdd1-3bc5484bbd3f" />
+
+
+
+
 
 
