@@ -1,10 +1,10 @@
-#include "BLEDevice.h" //defining all
+#include "BLEDevice.h" 
 #define pending  LED_B   
 #define found LED_G   
 #define locking  PA12 
 BLEAdvertData FD;
 
-int8_t ringRSSIRN = -110; //inital var
+int8_t ringRSSIRN = -110; 
 unsigned long ringseen = 0;  
 const unsigned long openwindow = 4000; 
 
@@ -65,5 +65,5 @@ void loop() {
         Serial.println(" dBm");
     }
 
-    delay(500); //IMPORTANT FOR THE LOCK TO NOT LOCK AND UNLOCK RANDOMLY
+    delay(500);
 }
