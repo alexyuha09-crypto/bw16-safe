@@ -1,4 +1,4 @@
-#include "BLEDevice.h"
+#include "BLEDevice.h" //defining all
 #define pending  LED_B   
 #define found LED_G   
 #define locking  PA12 
